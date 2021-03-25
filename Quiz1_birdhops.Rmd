@@ -1,0 +1,73 @@
+---
+title: "Quiz 1: Maximum Likelihood Estimation"
+subtitle: "STAT 343: Mathematical Statistics"
+output:
+  pdf_document:
+    keep_tex: true
+header-includes:
+   - \usepackage{booktabs}
+geometry: margin=1.5cm
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+\def\simiid{\stackrel{{\mbox{\text{\tiny i.i.d.}}}}{\sim}}
+
+## Instructions
+
+- Your quiz answers can be either typeset using latex or hand written. If you choose to write your answers by hand, make sure your work is legible and organized.
+- This is a closed book, closed notes, closed Moodle quiz. You are only permitted to use the Common Probability Distributions PDF, which is included in the files that you pulled from Github for this quiz.
+- This quiz is due Friday, 3/26 by 5 PM ET to Gradescope. Please submit it under the `Quiz 1` Assignment.
+
+## Problem 1: Bird Hops (Adapted from Rice problem 8.8)
+
+In an ecological study of the feeding behavior of birds, researchers counted the number of hops each of several birds took between flights.  The R code below reads in the data and makes an initial plot:
+
+```{r, warning=FALSE, message=FALSE, fig.height=3, fig.align='center'}
+bird_hops <- read_csv("https://marievozanne.github.io/stat343/data/bird_hops.csv") %>%
+  mutate(
+    num_hops = num_hops - 1
+  )
+
+ggplot(data = bird_hops, mapping = aes(x = num_hops)) +
+  geom_bar() + 
+  theme_bw()
+
+bird_hops %>%
+  count(num_hops)
+```
+
+After subtracting 1 from the originally reported counts (as is done in the code above), the number of hops is 0 if the bird took off directly (0 hops before flight), 1 if the bird took one hop before taking off, and so on.  The researchers wanted to learn about the distribution of the number of hops taken before flight by this species.
+
+\newpage
+
+Let $X_i$ be the number of hops taken before flight by bird number $i$.
+
+#### (a) What distribution might you use to model $X_i$? Please include 1 sentence to defend your choice.
+
+\vspace{0.25cm}
+
+$$X_i \sim$$
+
+\vspace{0.25cm}
+
+#### (b) Find the likelihood function.
+
+\vspace{5cm}
+
+#### (c) Find the log-likelihood function.
+
+\vspace{5cm}
+
+#### (d) Find a critical point of the log-likelihood function.
+
+\newpage
+
+#### (e) Verify that the critical point you found above gives a maximum of the log-likelihood.
+
+\vspace{8cm}
+
+#### (f) Write down your final answer for what the maximum likelihood estimator is.
